@@ -128,6 +128,14 @@ class UserPreferencesRepository private constructor(context: Context) {
         }
     }
 
+    suspend fun countNewStart(){
+        userPreferencesStore.updateData {currentPreferences ->
+            val currentCount = currentPreferences.startCounter
+            val newCount = currentCount + 1
+            currentPreferences.toBuilder().setStartCounter(newCount).build()
+        }
+    }
+
     suspend fun updateShowCompleted(completed: Boolean) {
         userPreferencesStore.updateData { currentPreferences ->
             currentPreferences.toBuilder().setShowCompleted(completed).build()

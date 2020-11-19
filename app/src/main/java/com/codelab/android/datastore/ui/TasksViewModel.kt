@@ -31,7 +31,8 @@ import kotlinx.coroutines.launch
 data class TasksUiModel(
     val tasks: List<Task>,
     val showCompleted: Boolean,
-    val sortOrder: SortOrder
+    val sortOrder: SortOrder,
+    val startCounter: Int
 )
 
 class TasksViewModel(
@@ -54,7 +55,8 @@ class TasksViewModel(
                 userPreferences.sortOrder
             ),
             showCompleted = userPreferences.showCompleted,
-            sortOrder = userPreferences.sortOrder
+            sortOrder = userPreferences.sortOrder,
+            startCounter = userPreferences.startCounter
         )
     }
     val tasksUiModel = tasksUiModelFlow.asLiveData()
@@ -99,6 +101,13 @@ class TasksViewModel(
     fun enableSortByPriority(enable: Boolean) {
         viewModelScope.launch {
             userPreferencesRepository.enableSortByPriority(enable)
+        }
+    }
+
+    fun countNewStart() {
+        viewModelScope.launch {
+
+            userPreferencesRepository.countNewStart()
         }
     }
 }

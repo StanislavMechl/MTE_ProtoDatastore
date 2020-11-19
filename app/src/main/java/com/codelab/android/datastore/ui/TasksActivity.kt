@@ -52,7 +52,10 @@ class TasksActivity : AppCompatActivity() {
             adapter.submitList(tasksUiModel.tasks)
             updateSort(tasksUiModel.sortOrder)
             binding.showCompletedSwitch.isChecked = tasksUiModel.showCompleted
+            binding.counter.text = tasksUiModel.startCounter.toString()
         }
+
+        viewModel.countNewStart()
     }
 
     private fun setupFilterListeners(viewModel: TasksViewModel) {
