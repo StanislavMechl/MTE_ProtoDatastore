@@ -88,7 +88,7 @@
             app:tint="?attr/colorOnSurface" />
 
         <com.google.android.material.chip.ChipGroup
-            android:layout_width="318dp"
+            android:layout_width="279dp"
             android:layout_height="wrap_content"
             android:paddingHorizontal="@dimen/row_item_margin_horizontal"
             app:singleLine="true">
